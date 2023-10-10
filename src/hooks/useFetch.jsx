@@ -1,20 +1,20 @@
 import { useState, useEffect } from "react"
 
-export function useFetch(url, method='GET') {
+export function useFetch(url, method="GET") {
     const [data, setData] = useState(null);
     const [isPending, setIsPending] = useState(false);
-    const [error, sertError] = useState(null);
+    const [error, setError] = useState(null);
     const [postData, setPostData] = useState(null)
 
-    const newData = (newRecipie) => {
+    const newData = (newRecipe) => {
         setPostData({
             method: "POST",
             headers: {
                 "Contnet-Type": "application/json",
             },
-            body: JSON.stringify(newRecipie)
+            body: JSON.stringify(newRecipe)
         })
-    }
+    }  
 
     useEffect(() => {
         const getData = async (fetchConfig) => {
@@ -25,12 +25,13 @@ export function useFetch(url, method='GET') {
                     throw new Error(req.statusText);
                 }
                 const data = await req.json();
-                setData(data);
                 setIsPending(false);
-                sertError(null);
-            } catch (error) {
-                setIsPending(false)
-                sertError(err.message)
+                setData(data);
+                setError(null);
+            } catch (error) { 
+                setIsPending(false);
+                setData(data);
+                setError(error.message)
             }
         };
 
@@ -38,11 +39,9 @@ export function useFetch(url, method='GET') {
            getData(postData)
         }
 
-        if (method == "GET") {
+        if (method == "GET") { 
             getData()
         }
-
-    }, [url, method, postData])
-
+    }, [url, method, postData]);
     return { data, isPending, error, newData }
 }

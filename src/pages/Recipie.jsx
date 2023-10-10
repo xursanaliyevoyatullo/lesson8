@@ -3,7 +3,7 @@ import { useFetch } from "../hooks/useFetch"
 
 function Recipie() {
   const { id } = useParams()
-  const url = 'https://boulder-piquant-caption.glitch.me/recipes/' + id
+  const url = 'https://feline-carpal-can.glitch.me/recipes/' + id
   const { data: recipie, error, isPending } = useFetch(url)
   return (
     <div className="mx-full mt-10 flex gap-7 items-center">

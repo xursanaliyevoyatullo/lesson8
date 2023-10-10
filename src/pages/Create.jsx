@@ -5,10 +5,10 @@ import { useFetch } from "../hooks/useFetch";
 import { toast } from "react-toastify";
 
 function Create() {
-  const { data, isPending, error, newData } = useFetch("https://quartz-billowy-diabloceratops.glitch.me/recipes", "POST" );
+  const { data, isPending, error, newData } = useFetch("https://feline-carpal-can.glitch.me/recipes/", "POST");
   const [title, setTitle] = useState("");
   const [cookingTime, setCookingTime] = useState(0);
-  const [imgUrl, setImgUrl] = useState("");
+  const [img, setImg] = useState("");
   const [method, setMethod] = useState("")
 
   const [ingredient, setIngredient] = useState('')
@@ -23,17 +23,17 @@ function Create() {
       });
     }
     setIngredient("");
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log({
       title,
       cookingTime: `${cookingTime} minutes`,
-      imgUrl,
+      img,
       method,
       id: uuidv4(),
-      ingredients,
+      ingredients 
     });
     toast.success("New recipie added seccessfuly")
   }
@@ -44,7 +44,7 @@ function Create() {
       <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center">
         <div className="form-control w-full max-w-xs mb-4">
           <label className="label">
-            <span className="label-text">Title:</span>
+             <span className="label-text">Title:</span>
           </label>
           <input
             type="text"
@@ -96,8 +96,8 @@ function Create() {
             type="url"
             placeholder="Past Url"
             className="textarea input-bordered w-full max-w-xs"
-            onChange={(e) => setImgUrl(e.target.value)}
-            value={imgUrl}
+            onChange={(e) => setImg(e.target.value)}
+            value={img}
           />
         </div>
         <div className="form-control w-full max-w-xs mb-4">
