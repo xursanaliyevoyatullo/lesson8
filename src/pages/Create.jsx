@@ -27,7 +27,7 @@ function Create() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({
+    newData ({
       title,
       cookingTime: `${cookingTime} minutes`,
       img,

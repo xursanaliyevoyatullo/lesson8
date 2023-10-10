@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 
 function RecipieList({ recipies }) {
@@ -16,8 +16,7 @@ function RecipieList({ recipies }) {
                             <h2 className="card-title text-2xl">
                                 {title}
                             </h2>
-                            <p>{method.substring(0, 100)}...</p>
-                            <NavLink to={`/recipie/${id}`} className="btn btn-outline btn-secondary">Read More</NavLink>
+                            <Link to={`/recipie/${id}`} className="btn btn-outline btn-secondary">Read More</Link>
                         </div>
                     </li>
                 )
