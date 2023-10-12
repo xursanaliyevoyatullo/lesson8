@@ -16,7 +16,6 @@ function App() {
     {
       path: '/',
       element: <MainLayout />,
-      errorElement: <Error/>,
       children: [
         {
           index: true,

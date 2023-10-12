@@ -5,6 +5,7 @@ function RecipieList({ recipies }) {
     return (
         <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {recipies.map((recipie) => {
+                console.log(recipie)
                 const {id, title, method, cookingTime, img} = recipie
                 return (
                     <li key={id} className="card w-full bg-base-100 shadow-xl">
@@ -16,6 +17,7 @@ function RecipieList({ recipies }) {
                             <h2 className="card-title text-2xl">
                                 {title}
                             </h2>
+                            <p>{method?.substring(0,100)}...</p>
                             <Link to={`/recipie/${id}`} className="btn btn-outline btn-secondary">Read More</Link>
                         </div>
                     </li>

@@ -5,7 +5,7 @@ import { useFetch } from "../hooks/useFetch";
 import { toast } from "react-toastify";
 
 function Create() {
-  const { data, isPending, error, newData } = useFetch("https://feline-carpal-can.glitch.me/recipes/", "POST");
+  const { data, isPending, error, newData } = useFetch("https://feline-carpal-can.glitch.me/recipes", "POST");
   const [title, setTitle] = useState("");
   const [cookingTime, setCookingTime] = useState(0);
   const [img, setImg] = useState("");
@@ -27,14 +27,15 @@ function Create() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    newData ({
-      title,
-      cookingTime: `${cookingTime} minutes`,
-      img,
-      method,
-      id: uuidv4(),
-      ingredients 
-    });
+    // newData ({
+    //   title: "Title",
+    //   cookingTime: `${cookingTime} minutes`,
+    //   img,
+    //   method,
+    //   id: "ID",
+    //   ingredients 
+    // });
+    console.log(title);
     toast.success("New recipie added seccessfuly")
   }
 
